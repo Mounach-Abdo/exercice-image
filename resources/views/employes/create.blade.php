@@ -40,6 +40,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Upload your image</label>
+                                <input type="file" name="img" id="img" required>
+                            </div>
+                        </div>
+                    </div>
                 <div class="row">
                     <div class="col-md-12">
                         <button class="btn btn-outline-primary" type="submit">

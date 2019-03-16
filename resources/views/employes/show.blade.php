@@ -7,6 +7,11 @@
             <div class="card-title">
                 Employee ID : {{ $employe->id }}
             </div>
+            <div>
+                @foreach ($employe->employes as $picture)    
+                <img src="{{Storage::url($picture->path) }}" alt="" >
+            @endforeach
+            </div>
         </div>
         <div class="card-body">
             <div class="row">

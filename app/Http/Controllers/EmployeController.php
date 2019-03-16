@@ -44,7 +44,7 @@ class EmployeController extends Controller
         $employe->last_name=$request->input('last_name');
         $employe->save();
         $employe->roles()->sync($request->role);
-
+        //$picture = \App\Picture::store($request,$employe->id);
         return redirect('employes/'.$employe->id);
     }
 

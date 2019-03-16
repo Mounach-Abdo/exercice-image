@@ -38,7 +38,7 @@ class PictureController extends Controller
     public function store(Request $request)
     {
         
-      /*  if($request->hasFile('img')){
+        if($request->hasFile('img')){
             $file=$request->file('img')->store('pictures','public');
             $picture = new Picture();
             //$picture->name =$request->file('picture')->path;
@@ -48,7 +48,7 @@ class PictureController extends Controller
             $picture->save();
         }
        
-       return $picture;    */
+       return $picture;    
     }
 
     /**

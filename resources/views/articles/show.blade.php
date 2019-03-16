@@ -28,7 +28,7 @@
             <div class="row">
              <div class="col-sm-6">
              @foreach ($article->pictures as $picture)    
-                 <img src="{{Storage::url($picture->path) }}" alt="" >
+                 <img src="{{Storage::url($picture->path) }}" alt="Erreur " >
              @endforeach
                            
             </div>

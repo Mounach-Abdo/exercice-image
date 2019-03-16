@@ -10,7 +10,7 @@ class Picture extends Model
     {
         return $this->belonsTo('App\Article');
     }
-
+  
     public static function store($request,$id) 
     {
         if($request->hasFile('img')){
@@ -25,4 +25,6 @@ class Picture extends Model
         }
        return $picture;
     }
+
+
 }
