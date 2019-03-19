@@ -11,7 +11,7 @@ class Picture extends Model
         return $this->belonsTo('App\Article');
     }
   
-    public static function store($request,$id) 
+    public static function store($request, $id) 
     {
         if($request->hasFile('img')){
             $file=$request->file('img')->store('pictures','public');

@@ -26,9 +26,17 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-md-4">
+                    Price article :
+                </div>
+                <div class="col-md-8">
+                    {{ $article->price }}
+                </div>
+            </div>
+            <div class="row">
              <div class="col-sm-6">
              @foreach ($article->pictures as $picture)    
-                 <img src="{{Storage::url($picture->path) }}" alt="Erreur " >
+                 <img src="{{Storage::url($picture->path) }}" alt="Erreur" >
              @endforeach
                            
             </div>

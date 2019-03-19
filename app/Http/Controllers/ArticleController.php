@@ -38,13 +38,13 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //$article=Article::all();
+        
         $article = new Article;
         $article->name=$request->input('name_article');
         $article->description=$request->input('description_article');
         $article->price=$request->input('price_article');
         $article->save();
-        $picture = \App\Picture::store($request,$article->id);
+        $picture = \App\Picture::store($request, $article->id);
 
         return redirect('articles/'.$article->id);
 
@@ -59,6 +59,7 @@ class ArticleController extends Controller
     public function show($article_id)
     {
         $article = Article::findOrFail($article_id);
+        $article->pictures;
         return view("articles.show",[
             'article' => $article,
         ]);

@@ -35,7 +35,7 @@ class PictureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         
         if($request->hasFile('img')){
@@ -45,6 +45,7 @@ class PictureController extends Controller
             $picture->name= 'photo';
             $picture->extention=$request->img->extension();
             $picture->path = $file;
+            $picture->article_id=$id;
             $picture->save();
         }
        
@@ -61,8 +62,6 @@ class PictureController extends Controller
     {
         $picture = Picture::findorfail($picture);
         return view('pictures.show', [ 'picture' => $picture]);
-
-
     }
 
     /**
