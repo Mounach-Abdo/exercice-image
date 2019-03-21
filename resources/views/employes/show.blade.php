@@ -7,11 +7,6 @@
             <div class="card-title">
                 Employee ID : {{ $employe->id }}
             </div>
-            <div>
-                @foreach ($employe->employes as $picture)    
-                <img src="{{Storage::url($picture->path) }}" alt="" >
-            @endforeach
-            </div>
         </div>
         <div class="card-body">
             <div class="row">
@@ -46,6 +41,10 @@
                     {{ $employe->updated_at }}
                 </div>
             </div>
+            <div class="row">  
+              <img src="{{ Storage::url($employe->picture->path) }}" class="img-fluid" alt="erreur" >
+            </div>
+           
         </div>
     </div>
 </div>

@@ -24,9 +24,7 @@ class PictureController extends Controller
      */
     public function create()
     {
-               
-        $picture = Picture::all();
-        return view('pictures.create',['picture'=>$picture]);
+
     }
 
     /**
@@ -38,6 +36,9 @@ class PictureController extends Controller
     public function store(Request $request, $id)
     {
         
+<<<<<<< HEAD
+
+=======
         if($request->hasFile('img')){
             $file=$request->file('img')->store('pictures','public');
             $picture = new Picture();
@@ -50,6 +51,7 @@ class PictureController extends Controller
         }
        
        return $picture;    
+>>>>>>> d39df792b03c54b45bf6f0dce9a762de2b157014
     }
 
     /**
@@ -60,8 +62,13 @@ class PictureController extends Controller
      */
     public function show($picture)
     {
-        $picture = Picture::findorfail($picture);
+       /* $picture = Picture::findorfail($picture);
         return view('pictures.show', [ 'picture' => $picture]);
+<<<<<<< HEAD
+
+*/
+=======
+>>>>>>> d39df792b03c54b45bf6f0dce9a762de2b157014
     }
 
     /**

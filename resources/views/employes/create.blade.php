@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="/employes" method="POST">
+            <form action="/employes" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-12">
@@ -31,8 +31,8 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Choose your role </label>
-                                <select name="role" id="">
-                                    <option value="">............</option>
+                                <select name="role" id="" required>
+                                    <option value="">Your role</option>
                                 @foreach ($roles as $role)
                                 <option value="{{$role->id}}">{{$role->type}}</option>
                                 @endforeach

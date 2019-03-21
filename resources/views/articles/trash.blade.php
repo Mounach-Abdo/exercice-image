@@ -1,14 +1,15 @@
 @extends('layouts.master')
 @section('content')
-<br>
 <div class="container">
+        @foreach ($articles as $article)
     <div class="card">
         <div class="card-header">
             <div class="card-title">
-               Article ID : {{ $article->id }}
+                Article number {{$article->id}} :
             </div>
         </div>
         <div class="card-body">
+           
             <div class="row">
                 <div class="col-md-4">
                     Name article :
@@ -26,20 +27,6 @@
                 </div>
             </div>
             <div class="row">
-<<<<<<< HEAD
-                    <div class="col-md-4">
-                        Price article :
-                    </div>
-                    <div class="col-md-8">
-                        {{ $article->price }}
-                    </div>
-                </div>
-                <br>
-            <div class="row">
-             <div class="col-sm-6">
-                 <img src="{{ Storage::url($article->pictures[0]->path) }}" class="img-fluid" alt="Erreur " >
-             </div>
-=======
                 <div class="col-md-4">
                     Price article :
                 </div>
@@ -48,14 +35,20 @@
                 </div>
             </div>
             <div class="row">
-             <div class="col-sm-6">
-             @foreach ($article->pictures as $picture)    
-                 <img src="{{Storage::url($picture->path) }}" alt="Erreur" >
-             @endforeach
-                           
+                <div class="col-sm-6">
+                    @foreach ($article->pictures as $picture)
+                    <img src="{{Storage::url($picture->path) }}"  class="img-fluid" alt="Erreur ">
+                    @endforeach
+                </div>
+                <div class="col-md-6">
+                <form action="/articles/{{$article->id}}/restore" method="post">
+                    @csrf
+                            <input type="submit" class="btn btn-primary" name="" id="" value="Restore Article">
+                    </form>
+                </div>
             </div>
->>>>>>> d39df792b03c54b45bf6f0dce9a762de2b157014
         </div>
     </div>
+      @endforeach    
 </div>
-@endSection
+@endsection

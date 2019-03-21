@@ -17,6 +17,7 @@ class CreateEmployesTable extends Migration
             $table->bigIncrements('id');
             $table->string('first_name');
             $table->string('last_name');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

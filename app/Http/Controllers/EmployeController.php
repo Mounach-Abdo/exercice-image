@@ -43,8 +43,9 @@ class EmployeController extends Controller
         $employe->first_name=$request->input('first_name');
         $employe->last_name=$request->input('last_name');
         $employe->save();
+        $type_image='employes';
         $employe->roles()->sync($request->role);
-        //$picture = \App\Picture::store($request,$employe->id);
+        $picture = \App\Picture::store($request, $employe->id, $type_image);
         return redirect('employes/'.$employe->id);
     }
 
@@ -54,9 +55,10 @@ class EmployeController extends Controller
      * @param  \App\Employe  $employe
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($employe_id)
     {
-        $employe=Employe::findOrFail($id);
+        $employe=Employe::findOrFail($employe_id);
+        $employe->pictures;
         return view('employes.show',[
             'employe'=>$employe,
         ]);

@@ -18,7 +18,9 @@ class CreatePicturesTable extends Migration
             $table->string('name');
             $table->string('extention');
             $table->string('path');
-            $table->bigInteger('article_id');
+            //$table->string('type_image');
+            $table->bigInteger('pictureable_id');
+            $table->string('pictureable_type');
             $table->timestamps();
         });
     }
