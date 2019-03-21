@@ -17,11 +17,7 @@ class Picture extends Model
     }*/
     
   
-<<<<<<< HEAD
     public static function store($request, $id, $type_image) 
-=======
-    public static function store($request, $id) 
->>>>>>> d39df792b03c54b45bf6f0dce9a762de2b157014
     {
         if($request->hasFile('img')){
             $file=$request->file('img')->store('pictures','public');

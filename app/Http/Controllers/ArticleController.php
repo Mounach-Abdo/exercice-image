@@ -44,12 +44,8 @@ class ArticleController extends Controller
         $article->description=$request->input('description_article');
         $article->price=$request->input('price_article');
         $article->save();
-<<<<<<< HEAD
         $type_image='articles';
         $picture = \App\Picture::store($request, $article->id, $type_image);
-=======
-        $picture = \App\Picture::store($request, $article->id);
->>>>>>> d39df792b03c54b45bf6f0dce9a762de2b157014
 
         return redirect('articles/'.$article->id);
 
