@@ -6,53 +6,56 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form><br><br>
     @foreach ($articles as $article)
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">
-                    Article Number : {{$article->id}}
+    <div class="card border-0">
+        <div class="card-header">
+            <div class="card-title">
+                <h2 style="">Brand of this article (clicked): + Serie Number {{$article->id}} </h2>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    @foreach($article->pictures as $picture)
+                    <img src="{{ Storage::url($picture->path) }}" class="img-fluid img-thumbnail" alt="Erreur ">
+                    @endforeach
+                    
                 </div>
-            </div> 
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        Name article :
-                    </div>
-                    <div class="col-md-8">
-                        {{ $article->name }}
-                    </div>
+                <div class="col-lg-3">
+                    <span style="color:red;font-size: 180%;font-weight:600;">{{ $article->price }}</span>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        Description article :
+                <div class="col-lg-3">
+                        <div class="col-md-6">
+                                <form action="/articles/{{$article->id}}" method="post">
+                                    @csrf
+                                    <input type="submit" class="btn btn-danger" name="" id="" value="Delete">
+                                    <input type="hidden" name="_method" value="delete">
+                                </form>
+                            </div>
                     </div>
-                    <div class="col-md-8">
-                        {{ $article->description }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        Price article :
-                    </div>
-                    <div class="col-md-8">
-                        {{ $article->price }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        @foreach($article->pictures as $picture)
-                        <img src="{{ Storage::url($picture->path) }}"  class="img-fluid" alt="Erreur ">
-                        @endforeach
-                    </div>
-                    <div class="col-md-6">
-                        <form action="/articles/{{$article->id}}" method="post">
-                            @csrf
-                            <input type="submit" class="btn btn-danger" name="" id="" value="Delete">
-                            <input type="hidden" name="_method" value="delete">
-                        </form>
-                    </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+            <div class="row">
+                <span class='border-right' style=";"><h4 >CARACTERISTIQUES</h4></span>
+            </div>
+            <div class="row ">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td> Name article :</td>
+                            <td>{{ $article->name }}</td>
+                        </tr>
+                        <tr>
+                            <td> Description article :</td>
+                            <td> {{ $article->description }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
                 </div>
             </div>
         </div>
-    @endforeach    
+        <br>
+    @endforeach
 </div>
 @endsection

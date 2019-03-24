@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('employes/{id}/restore','EmployeController@restore');
+Route::get('employes/trash','EmployeController@showtrash');
 Route::post('articles/{id}/restore','ArticleController@restore');
 Route::get('articles/trash','ArticleController@showtrash');
 Route::resource('roles','RoleController');

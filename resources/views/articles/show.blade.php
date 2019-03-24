@@ -26,7 +26,6 @@
                 </div>
             </div>
             <div class="row">
-<<<<<<< HEAD
                     <div class="col-md-4">
                         Price article :
                     </div>
@@ -36,25 +35,9 @@
                 </div>
                 <br>
             <div class="row">
-             <div class="col-sm-6">
-                 <img src="{{ Storage::url($article->pictures[0]->path) }}" class="img-fluid" alt="Erreur " >
-             </div>
-=======
-                <div class="col-md-4">
-                    Price article :
-                </div>
-                <div class="col-md-8">
-                    {{ $article->price }}
-                </div>
+            <div class="col-sm-6">
+                <img src="{{ Storage::url($article->pictures[0]->path) }}" class="img-fluid img-thumbnail" alt="Erreur " >
             </div>
-            <div class="row">
-             <div class="col-sm-6">
-             @foreach ($article->pictures as $picture)    
-                 <img src="{{Storage::url($picture->path) }}" alt="Erreur" >
-             @endforeach
-                           
-            </div>
->>>>>>> d39df792b03c54b45bf6f0dce9a762de2b157014
         </div>
     </div>
 </div>

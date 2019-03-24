@@ -15,7 +15,11 @@ class EmployeController extends Controller
      */
     public function index()
     {
-        //
+        $employes=Employe::all();
+        return view('employes.index',[
+            'employes'=>$employes,
+        ]);
+        
     }
 
     /**
@@ -93,8 +97,23 @@ class EmployeController extends Controller
      * @param  \App\Employe  $employe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employe $employe)
+    public function destroy($employe)
     {
-        //
+        $employe=Employe::findOrFail($employe);
+        $employe->delete();
+        return redirect('employes/');
+    }
+    public function showtrash()
+    {
+        $employes=Employe::onlyTrashed()->get();
+        return view('employes.trash',[
+            'employes'=>$employes
+        ]);
+    }
+
+    public function restore($id)
+    {
+        Employe::onlyTrashed()->find($id)->restore();
+        return back();
     }
 }
