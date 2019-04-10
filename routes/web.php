@@ -25,3 +25,7 @@ Route::resource('employes','EmployeController');
 Route::resource('pictures','PictureController'); 
 Route::resource('tags','TagController'); 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

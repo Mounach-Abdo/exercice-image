@@ -1,3 +1,4 @@
+
 <?php
 
 return [
@@ -46,6 +47,9 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'staff'=>'session',
+        'provider'=>'staff',
     ],
 
     /*
@@ -69,6 +73,12 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'staff'=>[
+            'driver'=>'eloquent',
+            'model'=>App\Staff::class,
+
         ],
 
         // 'users' => [
