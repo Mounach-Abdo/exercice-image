@@ -1,17 +1,13 @@
 <?php
 
 use Faker\Generator as Faker;
+use App\Article;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Article::class, function (Faker $faker) {
     return [
 
-        'name'=>$faker->text(50),
+        'name'=>$faker->text(7),
         'description'=>$faker->text(100),
-        'price'=>$faker->number,
-    
-
-
-
-        
+        'price'=>$faker->numberBetween($min = 10, $max = 900),
     ];
 });

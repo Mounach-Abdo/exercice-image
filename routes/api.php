@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Http\Resources\Article as ArticleResource;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,8 +16,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('article', function() {
-    return new ArticleResource(App\Article::find(1));
-});
+Route::get('/articles', 'Api\ArticleController@index');
+
+
+Route::get('/articles/{id}', 'Api\ArticleController@show');
+
 
 

@@ -22,7 +22,7 @@ class Article extends JsonResource
             'pictures' => new PictureCollection(Article::find($this->id)->pictures),
             'deleted_at' => $this->deleted_at,
             'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
+            'updated_at' => $this->updated_ata
         ];
     }
 
