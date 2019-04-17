@@ -20,12 +20,12 @@ class ArticleController extends Controller
          $articles =Article::paginate(5);
 
          //return collection of articles as a resource
-         return ArticleResource::collection($articles);
+        // return ArticleResource::collection($articles);
 
-        /*$articles = Article::all();
+        $articles = Article::all();
         return view('articles.index',[
             'articles'=>$articles
-        ]);  */
+        ]);  
     }
 
     /**
@@ -47,15 +47,28 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         
-        $article = new Article;
+       /* $article = new Article;
         $article->name=$request->input('name_article');
         $article->description=$request->input('description_article');
         $article->price=$request->input('price_article');
         $article->save();
         $type_image='articles';
-        $picture = \App\Picture::store($request, $article->id, $type_image);
+        $picture = \App\Picture::store($request, $article->id, $type_image);*/
 
-        return redirect('articles/'.$article->id);
+        $article = new Article([
+            'name' => $request->get('name'),
+            'description' => $request->get('description'),
+            'price' => $request->get('price')
+          ]);
+    
+          $article->save();
+    
+          return response()->json('successfully added');
+
+
+
+         //return response()->json(['status'=>'success','msg'=>'Article created successfully']);
+       // return redirect('articles/'.$article->id);
 
     }
 

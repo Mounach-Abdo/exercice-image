@@ -19,7 +19,7 @@ class Article extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'price' => $this->price,
-            'pictures' => new PictureCollection(Article::find($this->id)->pictures),
+            //'pictures' => new PictureCollection(Article::find($this->id)->pictures),
             'deleted_at' => $this->deleted_at,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_ata

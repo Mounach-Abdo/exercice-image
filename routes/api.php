@@ -18,8 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/articles', 'Api\ArticleController@index');
 
-
 Route::get('/articles/{id}', 'Api\ArticleController@show');
+Route::post('/articles', 'Api\ArticleController@store');
+Route::post('/articles/{id}','Api\ArticleController@destroy');
 
 
 

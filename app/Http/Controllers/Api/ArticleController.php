@@ -6,6 +6,7 @@ use App\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Article as ArticleResource;
+use App\Http\Resources\ArticleCollection;
 
 class ArticleController extends Controller
 {
@@ -15,19 +16,9 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $articles = Article::paginate(2);
-        return new App\Http\Resources\ArticleCollection($articles);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    {    $articles = Article::all();
+        //$articles = Article::paginate(2);
+        return new ArticleCollection($articles);
     }
 
     /**
@@ -38,7 +29,13 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $article  = new Article;
+      $article->name =$request->name;
+      $article->description=$request->description;
+      $article->price =$request->price;
+      $article->save();
+      return response()->json(new ArticleResource($article), 201);
+
     }
 
     /**
@@ -54,17 +51,6 @@ class ArticleController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Article  $article
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Article $article)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -73,7 +59,13 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+         $article=Article::findOrFail($article);
+         $article->name=$request->input('name');
+         $article->description=$request->input('description');
+         $article->price=$request->input('price');
+         $article->save();
+         return response()->json(new ArticleResource($article), 201);
+
     }
 
     /**
@@ -82,8 +74,11 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article)
+    public function destroy($id)
     {
-        //
+        $article = new Article();
+        $article->find($id)->delete();
+        return response()->json([], 202);
+
     }
 }
